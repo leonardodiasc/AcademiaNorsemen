@@ -17,7 +17,7 @@ public class UsuarioDAO {
     
     public void insert(Usuario usuario){
         try {
-            String sql = "INSERT INTO usuario (usuario,senha) values(?,?); ";
+            String sql = "INSERT INTO Usuario (usuario,senha) values(?,?); ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados

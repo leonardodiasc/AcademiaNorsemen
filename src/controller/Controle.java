@@ -1,12 +1,39 @@
 package controller;
-
+import model.Usuario;
+import java.sql.*;
+import dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 import view.MensagensAvisosView;
+import javax.swing.*;
 
 public class Controle {
+
+   public static String[] JOptionPaneMultiInput() {
+       String[] campos = new String[2];
+      JTextField campoNome = new JTextField(5);
+      JTextField campoSenha = new JTextField(5);
+
+      JPanel myPanel = new JPanel();
+      myPanel.add(new JLabel("Nome:"));
+      myPanel.add(campoNome);
+      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+      myPanel.add(new JLabel("Senha:"));
+      myPanel.add(campoSenha);
+
+      int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+      if (result == JOptionPane.OK_OPTION) {
+         campos[0] = campoNome.getText();
+         campos[1] = campoSenha.getText();
+      }
+      return campos;
+   }
+
     
     // método usado para iniciar o sistema
-    public void iniciarSistema(){
+    public void iniciarSistema(Connection connection){
+        String[] campos = new String[2];
+        UsuarioDAO newUsuarioInsertion = new UsuarioDAO(connection);
         
         //cria os objetos
         MensagensAvisosView tela = new MensagensAvisosView();
@@ -21,11 +48,9 @@ public class Controle {
             
             switch (opcaoEscolhida){
                 case "1":
-                    JOptionPane.showInputDialog(
-                null,
-                "Digite o nome do cliente:", //mensagem
-                ":: CONTROLE DE CLIENTES ::", //título
-                -1);
+                    campos = JOptionPaneMultiInput();
+                    Usuario newUsuario = new Usuario(campos[0], campos[1]);
+                    newUsuarioInsertion.insert(newUsuario);
                     break;
                 case "2":
                     break;
