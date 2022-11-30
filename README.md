@@ -1,4 +1,4 @@
-# Academia Os Irmãos Thor e Loki  (Em Construção)
+# Academia Norsemen  (Em Construção)
 > Projeto em Java, com interface gráfica, MVC e CRUD. Utilizando MySQL como Banco de Dados e POO como paradigma.
 
 ![image](https://raw.githubusercontent.com/github/explore/5b3600551e122a3277c2c5368af2ad5725ffa9a1/topics/java/java.png) ![image](https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png)
