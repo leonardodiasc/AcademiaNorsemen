@@ -9,13 +9,15 @@ public class ConnectionFactory {
     private static final String usuario = "admin";
     private static final String senha = "admin";
     
-    public static void connectionMySQL(){
+    public static Connection connectionMySQL(){
 
-    try (Connection connection = DriverManager.getConnection(LINK1, usuario, senha)){
+    try {
+        conexao_MySQL = DriverManager.getConnection(LINK1, usuario, senha);
         System.out.println("Database connected!");
     } catch (SQLException e) {
         throw new IllegalStateException("Cannot connect to the database!", e);
     }
+    return conexao_MySQL;
     }
     
     public static void closeConnectionMySQL(){

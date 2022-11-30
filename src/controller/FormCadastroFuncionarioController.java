@@ -31,7 +31,7 @@ public class FormCadastroFuncionarioController {
         Funcionario novoFuncionarioCadastrado = new Funcionario(nomeNovoFuncionario, funcaoNovoFuncionario, salarioNovoFuncionario, enderecoNovoFuncionario, telefoneNovoFuncionario);
         
         // cria uma conexão com o banco de dados
-        Connection conexao = new ConnectionFactory().connectionPostgreSQL();
+        Connection conexao = new ConnectionFactory().connectionMySQL();
         
         //cria um usuárioDAO pra chamar a função de verificar se existe no BD através do "If Else" e dps inserir(insert)
         //passa a conexao como parametro para que o usuarioDAO crie um objeto com aquela conexão única

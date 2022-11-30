@@ -25,7 +25,7 @@ public class LoginController {
         
         //verifica se existe no BD
         
-        Connection conexao = new ConnectionFactory().connectionPostgreSQL();
+        Connection conexao = new ConnectionFactory().connectionMySQL();
         UsuarioDAO usuarioAutenticando = new UsuarioDAO(conexao);
 
         boolean existeUsuarioNoBD = usuarioAutenticando.existeNoBancoPorUsuarioESenha(usuarioAutenticavel);
