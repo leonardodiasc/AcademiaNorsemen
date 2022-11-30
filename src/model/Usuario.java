@@ -10,6 +10,11 @@ public class Usuario {
         this.usuario = usuario;
         this.senha = senha;
     }
+    public Usuario(Usuario usuario){
+    this.id = usuario.id;
+    this.usuario = usuario.usuario;
+    this.senha = usuario.senha;
+    }
 
     public Usuario(String usuario, String senha) {
         this.usuario = usuario;

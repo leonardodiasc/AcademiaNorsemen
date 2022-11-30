@@ -1,6 +1,7 @@
 package controller;
 import model.Usuario;
 import java.sql.*;
+import java.sql.SQLException;
 import dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 import view.MensagensAvisosView;
@@ -21,7 +22,7 @@ public class Controle {
       myPanel.add(campoSenha);
 
       int result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+               "Por favor digite o usuário e a senha do usuário:", JOptionPane.OK_CANCEL_OPTION);
       if (result == JOptionPane.OK_OPTION) {
          campos[0] = campoNome.getText();
          campos[1] = campoSenha.getText();
@@ -33,7 +34,7 @@ public class Controle {
     // método usado para iniciar o sistema
     public void iniciarSistema(Connection connection){
         String[] campos = new String[2];
-        UsuarioDAO newUsuarioInsertion = new UsuarioDAO(connection);
+        UsuarioDAO newUsuarioQuery = new UsuarioDAO(connection);
         
         //cria os objetos
         MensagensAvisosView tela = new MensagensAvisosView();
@@ -50,9 +51,22 @@ public class Controle {
                 case "1":
                     campos = JOptionPaneMultiInput();
                     Usuario newUsuario = new Usuario(campos[0], campos[1]);
-                    newUsuarioInsertion.insert(newUsuario);
+                    newUsuarioQuery.insert(newUsuario);
                     break;
                 case "2":
+                    try{
+                        campos[0] = JOptionPane.showInputDialog(
+                         null,
+                         "digite o nome do cliente que pesquisa:", //mensagem
+                         ":: PESQUISA DE CLIENTES ::", //título
+                         -1);
+                        Usuario usuarioSelect = new Usuario(newUsuarioQuery.selectPorNome(campos[0]));
+                        JOptionPane.showMessageDialog(null, usuarioSelect.getUsuario());
+                        JOptionPane.showMessageDialog(null, usuarioSelect.getSenha());
+                    }catch(Error e){
+                        JOptionPane.showMessageDialog(null, "Usuário não encontrado.");
+                        throw new RuntimeException("Houve um erro na pesquisa de usuários!", e);
+                    }
                     break;
                 case "3":
                     break;

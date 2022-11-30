@@ -62,7 +62,7 @@ public class UsuarioDAO {
     
     public ArrayList<Usuario> selectAll(){
         try {
-            String sql = "SELECT * FROM usuario";
+            String sql = "SELECT * FROM Usuario";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             return pesquisaListaUsuarios(stm);
@@ -92,11 +92,11 @@ public class UsuarioDAO {
         return usuarios;
     }
     
-    public Usuario selectPorId (Usuario usuario){
+    public Usuario selectPorNome (String usuario){
         try {
-            String sql = "SELECT * FROM usuario WHERE id = ?";
+            String sql = "SELECT * FROM Usuario WHERE usuario = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, usuario.getId());
+            stm.setString(1, usuario);
             
             return pesquisaListaUsuarios(stm).get(0);
             
@@ -107,7 +107,7 @@ public class UsuarioDAO {
     
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario){
         try {
-            String sql = "SELECT * FROM usuario WHERE usuario = ? AND senha = ? ";
+            String sql = "SELECT * FROM Usuario WHERE usuario = ? AND senha = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
@@ -125,7 +125,7 @@ public class UsuarioDAO {
     
         public boolean existeNoBancoSomentePorUsuario(Usuario usuario){
         try {
-            String sql = "SELECT * FROM usuario WHERE usuario = ? ";
+            String sql = "SELECT * FROM Usuario WHERE usuario = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
