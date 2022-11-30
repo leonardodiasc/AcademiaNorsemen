@@ -11,13 +11,13 @@ public class ConnectionFactory {
     
     public static Connection connectionMySQL(){
 
-    try {
-        conexao_MySQL = DriverManager.getConnection(LINK1, usuario, senha);
-        System.out.println("Database connected!");
-    } catch (SQLException e) {
-        throw new IllegalStateException("Cannot connect to the database!", e);
-    }
-    return conexao_MySQL;
+        try {
+            conexao_MySQL = DriverManager.getConnection(LINK1, usuario, senha);
+            System.out.println("Database connected!");
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect to the database!", e);
+        }
+        return conexao_MySQL;
     }
     
     public static void closeConnectionMySQL(){
