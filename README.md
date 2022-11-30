@@ -1,14 +1,14 @@
 # Academia Os Irmãos Thor e Loki  (Em Construção)
 > Projeto em Java, com interface gráfica, MVC e CRUD. Utilizando PostGreeSQL como Banco de Dados e POO como paradigma.
 
-![image](https://user-images.githubusercontent.com/80219103/203168132-3c5c30b2-1efd-46c7-8e52-26bbc6a750f6.png) ![image](https://user-images.githubusercontent.com/80219103/203168839-ded4606a-0163-4272-8f3f-156961d69c06.png)
+![image](https://user-images.githubusercontent.com/80219103/203168132-3c5c30b2-1efd-46c7-8e52-26bbc6a750f6.png) ![image](https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png)
 
 
 
 ```
 Requisitos para funcionamento:
 
-- PostgreeSQL;
+- MySQL;
 - Apache Netbeans;
 ```
 
