@@ -15,10 +15,10 @@ public class Visitante {
     private int valorAserPago;
     private boolean estaAtivo;
     
-    public Visitante(String nome, int cpf){
+    public Visitante(String nome, int cpf, int valorAserPago){
         this.nome = nome;
         this.cpf = cpf;
-        this.valorAserPago = 15;
+        this.valorAserPago = valorAserPago;
         this.estaAtivo = true;
     }
     public Visitante(String nome, int cpf, int valorAserPago, boolean estaAtivo){

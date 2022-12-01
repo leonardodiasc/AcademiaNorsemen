@@ -75,7 +75,7 @@ public class VisitanteDAO {
             String sql = "SELECT * FROM Visitante";
             PreparedStatement stm = connection.prepareStatement(sql);
             
-            return pesquisaListaFuncionarios(stm);
+            return pesquisaListaVisitantes(stm);
             
         } catch (SQLException e){
             throw new RuntimeException("Houve um erro ao capturar a tabela de visitantes!", e);
