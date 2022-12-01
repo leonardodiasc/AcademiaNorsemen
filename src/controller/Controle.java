@@ -60,9 +60,9 @@ public class Controle {
                          "digite o nome do cliente que pesquisa:", //mensagem
                          ":: PESQUISA DE CLIENTES ::", //título
                          -1);
-                        Usuario usuarioSelect = new Usuario(newUsuarioQuery.selectPorNome(campos[0]));
-                        JOptionPane.showMessageDialog(null, usuarioSelect.getUsuario());
-                        JOptionPane.showMessageDialog(null, usuarioSelect.getSenha());
+                          System.out.println(newUsuarioQuery.selectPorNome(campos[0]));
+                        //OptionPane.showMessageDialog(null, usuarioSelect.getUsuario());
+                        //JOptionPane.showMessageDialog(null, usuarioSelect.getSenha());
                     }catch(Error e){
                         JOptionPane.showMessageDialog(null, "Usuário não encontrado.");
                         throw new RuntimeException("Houve um erro na pesquisa de usuários!", e);

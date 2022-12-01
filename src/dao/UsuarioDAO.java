@@ -1,11 +1,12 @@
 package dao;
-
 import java.sql.Connection;
 import model.Usuario;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.sql.*;
+import java.util.Scanner;
 
 public class UsuarioDAO {
     
@@ -21,7 +22,7 @@ public class UsuarioDAO {
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, usuario.getUsuario().toUpperCase());
+            stm.setString(1, usuario.getUsuario());
             stm.setString(2, usuario.getSenha());
             stm.execute();
             
@@ -92,13 +93,14 @@ public class UsuarioDAO {
         return usuarios;
     }
     
-    public Usuario selectPorNome (String usuario){
+    public String selectPorNome (String usuario){
         try {
             String sql = "SELECT * FROM Usuario WHERE usuario = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, usuario);
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, usuario);
+            ResultSet rs = st.executeQuery();
             
-            return pesquisaListaUsuarios(stm).get(0);
+            return rs.getString(1);
             
         } catch (SQLException e){
             throw new RuntimeException("Houve um erro na pesquisa de usuários!", e);
