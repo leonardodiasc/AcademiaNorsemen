@@ -41,7 +41,7 @@ public class VisitanteDAO {
     
     public void update (Visitante visitante) {
         try {
-            String sql = "UPDATE funcionario SET nome = ?, funcao = ?, salario = ?, endereco = ?, telefone = ? WHERE id = ? ";
+            String sql = "UPDATE Visitante SET nome = ?, cpf = ?, valorAserPago = ?, estaAtivo = ? WHERE cpf = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
@@ -49,6 +49,7 @@ public class VisitanteDAO {
             stm.setInt(2, visitante.getCpf());
             stm.setInt(3, visitante.getValorAserPago());
             stm.setBoolean(4, visitante.getEstaAtivo());
+            stm.setInt(5, visitante.getCpf());
             stm.execute();
             
         } catch (SQLException e){
@@ -58,7 +59,7 @@ public class VisitanteDAO {
     
     public void delete(Visitante visitante) {
         try {
-            String sql = "DELETE FROM funcionario WHERE id = ? ";
+            String sql = "DELETE FROM Visitante WHERE id = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
@@ -94,8 +95,8 @@ public class VisitanteDAO {
         while (resultSet.next()) {
             String nome = resultSet.getString("nome");
             int cpf = resultSet.getInt("Cpf");
-            int valorAserPago = resultSet.getInt("salario");
-            boolean estaAtivo = resultSet.getBoolean("endereco");
+            int valorAserPago = resultSet.getInt("valor a ser pago");
+            boolean estaAtivo = resultSet.getBoolean("esta ativo");
             
             Visitante visitanteComDadosDoBanco = new Visitante(nome,cpf,valorAserPago,estaAtivo);
             visitantes.add(visitanteComDadosDoBanco);
@@ -106,7 +107,7 @@ public class VisitanteDAO {
     
     public Visitante selectPorCpf (Visitante visitante){
         try {
-            String sql = "SELECT * FROM funcionario WHERE id = ?";
+            String sql = "SELECT * FROM Visitante WHERE id = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, visitante.getCpf());
             
@@ -117,9 +118,9 @@ public class VisitanteDAO {
         }
     }
     
-        public boolean existeNoBancoPorNome(Visitante visitante){
+        public boolean selectPorNome(Visitante visitante){
         try {
-            String sql = "SELECT * FROM funcionario WHERE nome = ? AND funcao = ? ";
+            String sql = "SELECT * FROM Visitante WHERE nome = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
