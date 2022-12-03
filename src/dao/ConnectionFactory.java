@@ -5,11 +5,11 @@ import java.sql.*;
 public class ConnectionFactory {
     private static Connection conexao_MySQL = null;
     private static String localBD = "localhost";
-    private static String LINK1 = "jdbc:mysql://"+localBD+":3306/banco_A3";
-    private static final String usuario = "admin";
-    private static final String senha = "admin";
+    private static String LINK1 = "jdbc:postgresql://"+localBD+":5432/banco_A3";
+    private static final String usuario = "postgres";
+    private static final String senha = "123";
     
-    public static Connection connectionMySQL(){
+    public static Connection connectionPostgreSQL(){
 
         try {
             conexao_MySQL = DriverManager.getConnection(LINK1, usuario, senha);
@@ -20,7 +20,7 @@ public class ConnectionFactory {
         return conexao_MySQL;
     }
     
-    public static void closeConnectionMySQL(){
+    public static void closeConnectionPostgreSQL(){
         try {
             if (conexao_MySQL != null){
                 conexao_MySQL.close();

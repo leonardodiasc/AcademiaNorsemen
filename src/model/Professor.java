@@ -1,47 +1,50 @@
 package model;
 
-public class Funcionario {
+public class Professor {
     private int id;
     private String nome;
-    private String funcao;
+    private long CPF;
     private float salario;
     private String endereco;
     private long telefone;
+    private String horasTrabalhadas;
 
-    public Funcionario(int id, String nome, String funcao, float salario, String endereco, long telefone) {
+    public Professor(int id, String nome, long CPF, float salario, String endereco, long telefone, String horasTrabalhadas) {
         this.id = id;
         this.nome = nome;
-        this.funcao = funcao;
+        this.CPF = CPF;
         this.salario = salario;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.horasTrabalhadas = horasTrabalhadas;
     }
 
-    public Funcionario(String nome, String funcao, float salario, String endereco, long telefone) {
+    public Professor(String nome, long CPF, float salario, String endereco, long telefone, String horasTrabalhadas) {
         this.nome = nome;
-        this.funcao = funcao;
+        this.CPF = CPF; 
         this.salario = salario;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.horasTrabalhadas = horasTrabalhadas;
     }
         
-    public Funcionario(int id, String nome, String funcao){
+    public Professor(int id, String nome, String horasTrabalhadas){
         this.id = id;
         this.nome = nome;
-        this.funcao = funcao;
+        this.horasTrabalhadas = horasTrabalhadas;
     }
 
-    public Funcionario(String nome, String funcao) {
+    public Professor(String nome, String horasTrabalhadas) {
         this.nome = nome;
-        this.funcao = funcao;
+        this.horasTrabalhadas = horasTrabalhadas;
     }
 
-    public Funcionario(int id, String nome) {
+    public Professor(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Funcionario(String nome) {
+    public Professor(String nome) {
         this.nome = nome;
     }
 
@@ -85,12 +88,22 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public String getFuncao() {
-        return funcao;
+    public String getHorasTrabalhadas() {
+        return horasTrabalhadas;
     }
 
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
+    public void setHorasTrabalhadas(String horasTrabalhadas) {
+        this.horasTrabalhadas = horasTrabalhadas;
     }
-       
+
+    public long getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(long CPF) {
+        this.CPF = CPF;
+    }
+
+    
+    
 }

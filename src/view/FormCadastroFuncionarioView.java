@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.FormCadastroFuncionarioController;
@@ -11,10 +7,6 @@ import java.util.logging.Logger;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Murilo Melo
- */
 public class FormCadastroFuncionarioView extends javax.swing.JFrame {
 
     private final FormCadastroFuncionarioController controller;
@@ -128,6 +120,8 @@ public class FormCadastroFuncionarioView extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(FormCadastroFuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        dispose();
     }//GEN-LAST:event_botaoSalvarTelaCadastroActionPerformed
 
     /**

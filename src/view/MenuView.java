@@ -26,7 +26,93 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuPrincipalCliente = new javax.swing.JMenu();
+        subMenuPesquisarCliente = new javax.swing.JMenuItem();
+        subMenuCadastrarCliente = new javax.swing.JMenuItem();
+        menuPrincipalProfessor = new javax.swing.JMenu();
+        subMenuPesquisarProfessor = new javax.swing.JMenuItem();
+        subMenuCadastrarProfessor = new javax.swing.JMenuItem();
+        menuPrincipalFuncionario = new javax.swing.JMenu();
+        subMenuPesquisarFuncionario = new javax.swing.JMenuItem();
+        subMenuCadastrarFuncionario = new javax.swing.JMenuItem();
+        menuPrincipalVisitante = new javax.swing.JMenu();
+        subMenuPesquisarVisitante = new javax.swing.JMenuItem();
+        subMenuCadastrarVisitante = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        menuPrincipalCliente.setText("Cliente");
+
+        subMenuPesquisarCliente.setText("Pesquisar");
+        subMenuPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuPesquisarClienteActionPerformed(evt);
+            }
+        });
+        menuPrincipalCliente.add(subMenuPesquisarCliente);
+
+        subMenuCadastrarCliente.setText("Cadastrar");
+        subMenuCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuCadastrarClienteActionPerformed(evt);
+            }
+        });
+        menuPrincipalCliente.add(subMenuCadastrarCliente);
+
+        jMenuBar1.add(menuPrincipalCliente);
+
+        menuPrincipalProfessor.setText("Professor");
+
+        subMenuPesquisarProfessor.setText("Pesquisar");
+        subMenuPesquisarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuPesquisarProfessorActionPerformed(evt);
+            }
+        });
+        menuPrincipalProfessor.add(subMenuPesquisarProfessor);
+
+        subMenuCadastrarProfessor.setText("Cadastrar");
+        subMenuCadastrarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuCadastrarProfessorActionPerformed(evt);
+            }
+        });
+        menuPrincipalProfessor.add(subMenuCadastrarProfessor);
+
+        jMenuBar1.add(menuPrincipalProfessor);
+
+        menuPrincipalFuncionario.setText("Funcionario");
+
+        subMenuPesquisarFuncionario.setText("Pesquisar");
+        subMenuPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuPesquisarFuncionarioActionPerformed(evt);
+            }
+        });
+        menuPrincipalFuncionario.add(subMenuPesquisarFuncionario);
+
+        subMenuCadastrarFuncionario.setText("Cadastrar");
+        subMenuCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
+        menuPrincipalFuncionario.add(subMenuCadastrarFuncionario);
+
+        jMenuBar1.add(menuPrincipalFuncionario);
+
+        menuPrincipalVisitante.setText("Visitante");
+
+        subMenuPesquisarVisitante.setText("Pesquisar");
+        menuPrincipalVisitante.add(subMenuPesquisarVisitante);
+
+        subMenuCadastrarVisitante.setText("Cadastrar");
+        menuPrincipalVisitante.add(subMenuCadastrarVisitante);
+
+        jMenuBar1.add(menuPrincipalVisitante);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -36,11 +122,41 @@ public class MenuView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void subMenuCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastrarFuncionarioActionPerformed
+        FormCadastroFuncionarioView novaTelaCadastroFuncionario = new FormCadastroFuncionarioView();
+        novaTelaCadastroFuncionario.setVisible(true);
+    }//GEN-LAST:event_subMenuCadastrarFuncionarioActionPerformed
+
+    private void subMenuPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuPesquisarFuncionarioActionPerformed
+        FormPesquisaFuncionarioView novaTelaPesquisaFuncionario = new FormPesquisaFuncionarioView();
+        novaTelaPesquisaFuncionario.setVisible(true);
+    }//GEN-LAST:event_subMenuPesquisarFuncionarioActionPerformed
+
+    private void subMenuPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuPesquisarClienteActionPerformed
+        TelaDeBuscaAlunos telaListaAlunos = new TelaDeBuscaAlunos();
+        telaListaAlunos.setVisible(true);
+    }//GEN-LAST:event_subMenuPesquisarClienteActionPerformed
+
+    private void subMenuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastrarClienteActionPerformed
+        CadastrarAlunos telaCadastrarAluno = new CadastrarAlunos();
+        telaCadastrarAluno.setVisible(true);
+    }//GEN-LAST:event_subMenuCadastrarClienteActionPerformed
+
+    private void subMenuCadastrarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastrarProfessorActionPerformed
+        FormCadastroProfessorView telaCadastrarProfessor = new FormCadastroProfessorView();
+        telaCadastrarProfessor.setVisible(true);
+    }//GEN-LAST:event_subMenuCadastrarProfessorActionPerformed
+
+    private void subMenuPesquisarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuPesquisarProfessorActionPerformed
+        FormPesquisaProfessorView telaPesquisaProfessor = new FormPesquisaProfessorView();
+        telaPesquisaProfessor.setVisible(true);
+    }//GEN-LAST:event_subMenuPesquisarProfessorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +194,18 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuPrincipalCliente;
+    private javax.swing.JMenu menuPrincipalFuncionario;
+    private javax.swing.JMenu menuPrincipalProfessor;
+    private javax.swing.JMenu menuPrincipalVisitante;
+    private javax.swing.JMenuItem subMenuCadastrarCliente;
+    private javax.swing.JMenuItem subMenuCadastrarFuncionario;
+    private javax.swing.JMenuItem subMenuCadastrarProfessor;
+    private javax.swing.JMenuItem subMenuCadastrarVisitante;
+    private javax.swing.JMenuItem subMenuPesquisarCliente;
+    private javax.swing.JMenuItem subMenuPesquisarFuncionario;
+    private javax.swing.JMenuItem subMenuPesquisarProfessor;
+    private javax.swing.JMenuItem subMenuPesquisarVisitante;
     // End of variables declaration//GEN-END:variables
 }

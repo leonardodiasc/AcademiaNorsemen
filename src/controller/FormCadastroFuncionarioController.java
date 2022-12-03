@@ -31,7 +31,7 @@ public class FormCadastroFuncionarioController {
         Funcionario novoFuncionarioCadastrado = new Funcionario(nomeNovoFuncionario, funcaoNovoFuncionario, salarioNovoFuncionario, enderecoNovoFuncionario, telefoneNovoFuncionario);
         
         // cria uma conexão com o banco de dados
-        Connection conexao = new ConnectionFactory().connectionMySQL();
+        Connection conexao = new ConnectionFactory().connectionPostgreSQL();
         
         //cria um usuárioDAO pra chamar a função de verificar se existe no BD através do "If Else" e dps inserir(insert)
         //passa a conexao como parametro para que o usuarioDAO crie um objeto com aquela conexão única
@@ -47,8 +47,6 @@ public class FormCadastroFuncionarioController {
             
             //fecha a conexão e avisa que o cadastro deu certo
             conexao.close();
-            MensagensAvisosView telaAvisoUsuarioCadastradoSucesso = new MensagensAvisosView();
-            telaAvisoUsuarioCadastradoSucesso.mostrarMensagem("Funcionário cadastrado com sucesso", "Novo Funcionário", 1);
         }
     }
 }
