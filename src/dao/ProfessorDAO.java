@@ -46,39 +46,6 @@ public class ProfessorDAO {
         }
     }
     
-    public void update (Professor professor) {
-        try {
-            String sql = "UPDATE professor SET nome = ?, salario = ?, endereco = ?, telefone = ?, horasTrabalhadas = ?, WHERE id = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, professor.getNome().toUpperCase());
-            stm.setFloat(2, professor.getSalario());
-            stm.setString(3, professor.getEndereco());
-            stm.setLong(4, professor.getTelefone());
-            stm.setString(5, professor.getHorasTrabalhadas());
-            stm.setInt(6, professor.getId());
-            stm.execute();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao atualizar o professor!", e);
-        }
-    }
-    
-    public void delete(Professor professor) {
-        try {
-            String sql = "DELETE FROM professor WHERE id = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setInt(1, professor.getId());
-            stm.execute();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao deletar o professor!", e);
-        }
-    }
-    
     public ArrayList<Professor> selectAll(){
         try {
             String sql = "SELECT * FROM professor";
@@ -116,19 +83,6 @@ public class ProfessorDAO {
         return professores;
     }
     
-    public Professor selectPorId (Professor professor){
-        try {
-            String sql = "SELECT * FROM professor WHERE id = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, professor.getId());
-            
-            return pesquisaListaProfessores(stm).get(0);
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro na pesquisa de professores por id!", e);
-        }
-    }
-    
     public Professor selectPorNome (Professor professor){
         try {
             String sql = "SELECT * FROM professor WHERE nome = ?";
@@ -140,24 +94,6 @@ public class ProfessorDAO {
         } catch (SQLException e){
             throw new RuntimeException("Houve um erro na pesquisa de professores por nome!", e); 
         } 
-    }
-    
-    public boolean existeNoBancoPorNomeEHorasTrabalhadas(Professor professor){
-        try {
-            String sql = "SELECT * FROM professor WHERE nome = ? AND horasTrabalhadas = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, professor.getNome().toUpperCase());
-            stm.setString(2, professor.getHorasTrabalhadas());
-            stm.execute();
-            ResultSet resultSet = stm.getResultSet();
-            
-            return resultSet.next();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao cadastrar o novo professor!", e);
-        }
     }
     
     public boolean existeNoBancoSomentePorNome(Professor professor){

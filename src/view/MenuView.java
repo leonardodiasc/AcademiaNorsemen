@@ -26,6 +26,8 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuPrincipalCliente = new javax.swing.JMenu();
         subMenuPesquisarCliente = new javax.swing.JMenuItem();
@@ -41,6 +43,8 @@ public class MenuView extends javax.swing.JFrame {
         subMenuCadastrarVisitante = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Images/LogoThorLoki.png"))); // NOI18N
 
         menuPrincipalCliente.setText("Cliente");
 
@@ -105,9 +109,19 @@ public class MenuView extends javax.swing.JFrame {
         menuPrincipalVisitante.setText("Visitante");
 
         subMenuPesquisarVisitante.setText("Pesquisar");
+        subMenuPesquisarVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuPesquisarVisitanteActionPerformed(evt);
+            }
+        });
         menuPrincipalVisitante.add(subMenuPesquisarVisitante);
 
         subMenuCadastrarVisitante.setText("Cadastrar");
+        subMenuCadastrarVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuCadastrarVisitanteActionPerformed(evt);
+            }
+        });
         menuPrincipalVisitante.add(subMenuCadastrarVisitante);
 
         jMenuBar1.add(menuPrincipalVisitante);
@@ -118,11 +132,21 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,6 +181,16 @@ public class MenuView extends javax.swing.JFrame {
         FormPesquisaProfessorView telaPesquisaProfessor = new FormPesquisaProfessorView();
         telaPesquisaProfessor.setVisible(true);
     }//GEN-LAST:event_subMenuPesquisarProfessorActionPerformed
+
+    private void subMenuPesquisarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuPesquisarVisitanteActionPerformed
+        FormPesquisaVisitanteView telaPesquisaVisitante = new FormPesquisaVisitanteView();
+        telaPesquisaVisitante.setVisible(true);
+    }//GEN-LAST:event_subMenuPesquisarVisitanteActionPerformed
+
+    private void subMenuCadastrarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuCadastrarVisitanteActionPerformed
+        FormCadastroVisitanteView telaCadastroVisitante = new FormCadastroVisitanteView();
+        telaCadastroVisitante.setVisible(true);
+    }//GEN-LAST:event_subMenuCadastrarVisitanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +228,8 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuPrincipalCliente;
     private javax.swing.JMenu menuPrincipalFuncionario;

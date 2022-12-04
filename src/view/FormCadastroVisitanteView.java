@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.FormCadastroVisitanteController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Murilo Melo
@@ -11,10 +17,11 @@ package view;
 public class FormCadastroVisitanteView extends javax.swing.JFrame {
 
     //adicionar controllador
-    
+    private FormCadastroVisitanteController controller;
     
     public FormCadastroVisitanteView() {
         initComponents();
+        controller = new FormCadastroVisitanteController(this);
     }
 
     /**
@@ -35,7 +42,7 @@ public class FormCadastroVisitanteView extends javax.swing.JFrame {
         campoValorPagoNovoVisitante = new javax.swing.JTextField();
         botaoSalvarNovoVisitante = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Novo Visitante");
 
@@ -107,7 +114,11 @@ public class FormCadastroVisitanteView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoSalvarNovoVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarNovoVisitanteActionPerformed
-        // TODO add your handling code here:
+        try {
+            controller.salvaNovoVisitante();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormCadastroVisitanteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botaoSalvarNovoVisitanteActionPerformed
 
     /**
@@ -145,8 +156,34 @@ public class FormCadastroVisitanteView extends javax.swing.JFrame {
         });
     }
 
+    
+    
     //adicionar get e set
     
+    public JTextField getCampoCPFNovoVisitante() {
+        return campoCPFNovoVisitante;
+    }
+
+    public void setCampoCPFNovoVisitante(JTextField campoCPFNovoVisitante) {
+        this.campoCPFNovoVisitante = campoCPFNovoVisitante;
+    }
+
+    public JTextField getCampoNomeNovoVisitante() {
+        return campoNomeNovoVisitante;
+    }
+
+    public void setCampoNomeNovoVisitante(JTextField campoNomeNovoVisitante) {
+        this.campoNomeNovoVisitante = campoNomeNovoVisitante;
+    }
+
+    public JTextField getCampoValorPagoNovoVisitante() {
+        return campoValorPagoNovoVisitante;
+    }
+
+    public void setCampoValorPagoNovoVisitante(JTextField campoValorPagoNovoVisitante) {
+        this.campoValorPagoNovoVisitante = campoValorPagoNovoVisitante;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoSalvarNovoVisitante;
     private javax.swing.JTextField campoCPFNovoVisitante;

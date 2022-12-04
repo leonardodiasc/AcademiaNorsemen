@@ -45,39 +45,6 @@ public class FuncionarioDAO {
         }
     }
     
-    public void update (Funcionario funcionario) {
-        try {
-            String sql = "UPDATE funcionario SET nome = ?, funcao = ?, salario = ?, endereco = ?, telefone = ? WHERE id = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, funcionario.getNome().toUpperCase());
-            stm.setString(2, funcionario.getFuncao());
-            stm.setFloat(3, funcionario.getSalario());
-            stm.setString(4, funcionario.getEndereco());
-            stm.setLong(5, funcionario.getTelefone());
-            stm.setInt(6, funcionario.getId());
-            stm.execute();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao atualizar o funcionario!", e);
-        }
-    }
-    
-    public void delete(Funcionario funcionario) {
-        try {
-            String sql = "DELETE FROM funcionario WHERE id = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setInt(1, funcionario.getId());
-            stm.execute();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao deletar o funcionario!", e);
-        }
-    }
-    
     public ArrayList<Funcionario> selectAll(){
         try {
             String sql = "SELECT * FROM funcionario";
@@ -114,19 +81,6 @@ public class FuncionarioDAO {
         return funcionarios;
     }
     
-    public Funcionario selectPorId (Funcionario funcionario){
-        try {
-            String sql = "SELECT * FROM funcionario WHERE id = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, funcionario.getId());
-            
-            return pesquisaListaFuncionarios(stm).get(0);
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro na pesquisa de funcionarios por id!", e);
-        }
-    }
-    
     public Funcionario selectPorNome (Funcionario funcionario){
         try {
             String sql = "SELECT * FROM funcionario WHERE nome = ?";
@@ -139,25 +93,7 @@ public class FuncionarioDAO {
             throw new RuntimeException("Houve um erro na pesquisa de funcionarios por nome!", e); 
         } 
     }
-    
-    public boolean existeNoBancoPorNomeEFuncao(Funcionario funcionario){
-        try {
-            String sql = "SELECT * FROM funcionario WHERE nome = ? AND funcao = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, funcionario.getNome().toUpperCase());
-            stm.setString(2, funcionario.getFuncao());
-            stm.execute();
-            ResultSet resultSet = stm.getResultSet();
-            
-            return resultSet.next();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao cadastrar o novo funcionario!", e);
-        }
-    }
-    
+   
     public boolean existeNoBancoSomentePorNome(Funcionario funcionario){
         try {
             String sql = "SELECT * FROM funcionario WHERE nome = ? ";

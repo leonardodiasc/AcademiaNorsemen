@@ -25,12 +25,12 @@ public class VisitanteDAO {
     
     public void insert(Visitante visitante){
         try {
-            String sql = "INSERT INTO Visitante (nome,cpf,valorAserPago) VALUES(?,?,?); ";
+            String sql = "INSERT INTO visitante (nome,cpf,valoraserpago) VALUES(?,?,?); ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, visitante.getNome());
-            stm.setInt(2, visitante.getCpf());
+            stm.setString(1, visitante.getNome().toUpperCase());
+            stm.setLong(2, visitante.getCpf());
             stm.setInt(3, visitante.getValorAserPago());
             stm.execute();
         } catch (SQLException e){
@@ -38,39 +38,10 @@ public class VisitanteDAO {
         }
     }
     
-    public void update (Visitante visitante) {
-        try {
-            String sql = "UPDATE funcionario SET nome = ?, funcao = ?, salario = ?, endereco = ?, telefone = ? WHERE id = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setString(1, visitante.getNome());
-            stm.setInt(2, visitante.getCpf());
-            stm.setInt(3, visitante.getValorAserPago());
-            stm.execute();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao atualizar o visitante!", e);
-        }
-    }
-    
-    public void delete(Visitante visitante) {
-        try {
-            String sql = "DELETE FROM funcionario WHERE id = ? ";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            
-            // adicionando validação de dados para evitar SQL injection no banco de dados
-            stm.setInt(1, visitante.getCpf());
-            stm.execute();
-            
-        } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao deletar o visitante!", e);
-        }
-    }
-    
+  
     public ArrayList<Visitante> selectAll(){
         try {
-            String sql = "SELECT * FROM Visitante";
+            String sql = "SELECT * FROM visitante";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             return pesquisaListaVisitantes(stm);
@@ -91,8 +62,8 @@ public class VisitanteDAO {
         // laço enquanto tiver novas linhas do resultado da tebala usuarios, ele trará cada elemento tupla
         while (resultSet.next()) {
             String nome = resultSet.getString("nome");
-            int cpf = resultSet.getInt("Cpf");
-            int valorAserPago = resultSet.getInt("valorAserPago");
+            long cpf = resultSet.getLong("cpf");
+            int valorAserPago = resultSet.getInt("valoraserpago");
             
             Visitante visitanteComDadosDoBanco = new Visitante(nome,cpf,valorAserPago);
             visitantes.add(visitanteComDadosDoBanco);
@@ -100,23 +71,23 @@ public class VisitanteDAO {
         
         return visitantes;
     }
-    
-    public Visitante selectPorCpf (Visitante visitante){
+  
+        public Visitante selectPorNome (Visitante visitante){
         try {
-            String sql = "SELECT * FROM funcionario WHERE id = ?";
+            String sql = "SELECT * FROM visitante WHERE nome = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, visitante.getCpf());
+            stm.setString(1, visitante.getNome());
             
             return pesquisaListaVisitantes(stm).get(0);
             
         } catch (SQLException e){
-            throw new RuntimeException("Houve um erro na pesquisa de funcionarios!", e);
-        }
+            throw new RuntimeException("Houve um erro na pesquisa de visitante por nome!", e); 
+        } 
     }
     
         public boolean existeNoBancoPorNome(Visitante visitante){
         try {
-            String sql = "SELECT * FROM funcionario WHERE nome = ? AND funcao = ? ";
+            String sql = "SELECT * FROM visitante WHERE nome = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
@@ -127,7 +98,7 @@ public class VisitanteDAO {
             return resultSet.next();
             
         } catch (SQLException e){
-            throw new RuntimeException("Houve um erro ao cadastrar o novo funcionario!", e);
+            throw new RuntimeException("Houve um erro ao verificar o nome do visitante no BD!", e);
         }
     }
     
