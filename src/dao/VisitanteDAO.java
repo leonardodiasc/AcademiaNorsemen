@@ -25,14 +25,13 @@ public class VisitanteDAO {
     
     public void insert(Visitante visitante){
         try {
-            String sql = "INSERT INTO Visitante (nome,cpf,valorAserPago,estaAtivo) VALUES(?,?,?,?); ";
+            String sql = "INSERT INTO Visitante (nome,cpf,valorAserPago) VALUES(?,?,?); ";
             PreparedStatement stm = connection.prepareStatement(sql);
             
             // adicionando validação de dados para evitar SQL injection no banco de dados
             stm.setString(1, visitante.getNome());
             stm.setInt(2, visitante.getCpf());
             stm.setInt(3, visitante.getValorAserPago());
-            stm.setBoolean(4, visitante.getEstaAtivo());
             stm.execute();
         } catch (SQLException e){
             throw new RuntimeException("Houve um erro ao cadastrar o novo visitante!", e);
@@ -48,7 +47,6 @@ public class VisitanteDAO {
             stm.setString(1, visitante.getNome());
             stm.setInt(2, visitante.getCpf());
             stm.setInt(3, visitante.getValorAserPago());
-            stm.setBoolean(4, visitante.getEstaAtivo());
             stm.execute();
             
         } catch (SQLException e){
@@ -94,10 +92,9 @@ public class VisitanteDAO {
         while (resultSet.next()) {
             String nome = resultSet.getString("nome");
             int cpf = resultSet.getInt("Cpf");
-            int valorAserPago = resultSet.getInt("salario");
-            boolean estaAtivo = resultSet.getBoolean("endereco");
+            int valorAserPago = resultSet.getInt("valorAserPago");
             
-            Visitante visitanteComDadosDoBanco = new Visitante(nome,cpf,valorAserPago,estaAtivo);
+            Visitante visitanteComDadosDoBanco = new Visitante(nome,cpf,valorAserPago);
             visitantes.add(visitanteComDadosDoBanco);
         }
         

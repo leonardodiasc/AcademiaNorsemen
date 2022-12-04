@@ -13,20 +13,14 @@ public class Visitante {
     private String nome;
     private int cpf;
     private int valorAserPago;
-    private boolean estaAtivo;
     
     public Visitante(String nome, int cpf, int valorAserPago){
         this.nome = nome;
         this.cpf = cpf;
         this.valorAserPago = valorAserPago;
-        this.estaAtivo = true;
+
     }
-    public Visitante(String nome, int cpf, int valorAserPago, boolean estaAtivo){
-        this.nome = nome;
-        this.cpf = cpf;
-        this.valorAserPago = valorAserPago;
-        this.estaAtivo = estaAtivo;
-    }
+    
     public int getCpf(){
         return cpf;
     }
@@ -36,9 +30,7 @@ public class Visitante {
     public int getValorAserPago(){
         return valorAserPago;
     }
-    public boolean getEstaAtivo(){
-        return estaAtivo;
-    }
+
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -47,8 +39,5 @@ public class Visitante {
     }
     public void setValorAserPago(int valorAserPago){
         this.valorAserPago = valorAserPago;
-    }
-    public void setEstaAtivo(boolean estaAtivo){
-        this.estaAtivo = estaAtivo;
     }
 }
